@@ -60,6 +60,31 @@ Pré-requisitos: **Node.js ≥ 20** (para `node:fs/promises` e `--watch` nativo)
 
 ---
 
+## Publicar (recipe universal)
+
+Aplica-se a **qualquer** alteração — post novo, edição do about, retoque no CSS, novo template. Três comandos a partir da raiz do repo:
+
+```bash
+npm run build                           # 1. regenerar HTML a partir das fontes
+git add -A                              # 2. apanhar fontes E ficheiros gerados
+git commit -m "mensagem curta"          # 3a. registar
+git push                                # 3b. publicar
+```
+
+GitHub Pages republica em **~30s**. Sem build no CI — o que está em `main` é exactamente o que é servido.
+
+**Pegadinha única do workflow:** se te esqueceres do `npm run build`, o `git status` só mostra as fontes alteradas e o site no Pages fica desactualizado. Regra: **build sempre antes do commit**.
+
+Para iterar com *live reload* enquanto escreves:
+
+```bash
+node build.mjs --watch --serve          # http://localhost:4000
+```
+
+O `--watch` reconstrói automaticamente quando mudas qualquer ficheiro em `content/` ou `templates/`. O `--serve` levanta um servidor HTTP local na porta 4000.
+
+---
+
 ## Workflow diário — escrever um novo post
 
 ### 1. Escolher secção e *slug*
@@ -148,31 +173,16 @@ Para imagens importantes, vale a pena escrever em HTML directo para incluir `wid
      loading="lazy">
 ```
 
-### 5. Build local + preview
+### 5. Publicar
+
+Segue o [recipe universal](#publicar-recipe-universal) acima. Para este post seria:
 
 ```bash
 npm run build
-```
-
-Para iterar com *live reload* enquanto escreves:
-
-```bash
-node build.mjs --watch --serve
-# abre http://localhost:4000
-```
-
-O `--watch` reconstrói automaticamente quando mudas qualquer ficheiro em `content/` ou `templates/`. O `--serve` levanta um servidor HTTP local na porta 4000.
-
-### 6. Commit + push
-
-```bash
-git add content/boardgames/2026-05-08-resenha-spirit-island/
-git add .                                                    # apanha os HTMLs gerados
+git add -A
 git commit -m "boardgames: resenha Spirit Island"
 git push
 ```
-
-GitHub Pages republica em ~30s. Sem build no CI — o que está em `main` é exactamente o que é servido.
 
 ---
 
@@ -206,12 +216,13 @@ touch content/livros/.gitkeep
 
 (O `.gitkeep` força o git a registar a pasta vazia. Apaga-o quando criares o primeiro post.)
 
-### 3. Build + commit
+### 3. Publicar
+
+Segue o [recipe universal](#publicar-recipe-universal):
 
 ```bash
 npm run build
-git add build.mjs content/livros/
-git add livros/                                              # secção gerada
+git add -A
 git commit -m "site: nova secção livros"
 git push
 ```
