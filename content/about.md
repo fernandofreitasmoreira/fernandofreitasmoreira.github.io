@@ -12,7 +12,7 @@ Sou o **Fernando Moreira**. Doutorando em Informática na Universidade do Minho,
 Este sítio cobre quatro áreas:
 
 - **PhD** — notas e progressos da tese; reflexões sobre identidade digital, biometria, normativos europeus.
-- **Jogos de tabuleiro** — resenhas, sessões, listas, e ocasionalmente análises de mecânicas que me prendem.
+- **Jogos de tabuleiro** — críticas, sessões, listas, e ocasionalmente análises de mecânicas que me prendem.
 - **Comics** — leituras e descobertas; gosto de explorar tanto mainstream como autoral.
 - **Impressão 3D** — projectos, peças, falhanços. Aprendo em público.
 
