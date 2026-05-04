@@ -20,9 +20,10 @@ Não tenho redes sociais regulares (excepto LinkedIn, que actualizo pouco). Este
 
 ## Contacto
 
-- Email: [fernando@example.org](mailto:fernando@example.org) <!-- TODO: substituir pelo teu email real -->
+- Email: [fernando.freitas.moreira@gmail.com](mailto:fernando.freitas.moreira@gmail.com) <!-- TODO: substituir pelo teu email real -->
 - LinkedIn: [fernandofreitasmoreira](https://www.linkedin.com/in/fernandofreitasmoreira/)
 - GitHub: [fernandofreitasmoreira](https://github.com/fernandofreitasmoreira)
+- Board Game Geek: [nicexipi](https://boardgamegeek.com/profile/Nicexipi)
 - Atom: [feed.xml](/feed.xml)
 
 ## Sobre o sítio
