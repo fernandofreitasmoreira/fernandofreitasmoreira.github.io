@@ -24,7 +24,7 @@ const SITE = {
   author: 'Fernando Moreira',
   sections: {
     phd: { title: 'PhD', description: 'Investigação em liveness detection on-device. Universidade do Minho.' },
-    boardgames: { title: 'Jogos de tabuleiro', description: 'Resenhas, sessões, listas e descobertas.' },
+    boardgames: { title: 'Jogos de tabuleiro', description: 'Críticas, sessões, listas e descobertas.' },
     comics: { title: 'Comics', description: 'Leituras, descobertas, recomendações.' },
     '3dprint': { title: 'Impressão 3D', description: 'Projectos, peças, aprendizagens, falhanços.' },
     outros: { title: 'Outros', description: 'Tudo o que não cabe nas outras secções: meta, ferramentas, ideias avulsas.' },
