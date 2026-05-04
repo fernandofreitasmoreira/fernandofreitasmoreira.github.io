@@ -1,7 +1,8 @@
----
-permalink: /robots.txt
----
 User-agent: *
-Disallow:
+Disallow: /content/
+Disallow: /templates/
+Disallow: /build.mjs
+Disallow: /package.json
+Disallow: /package-lock.json
 
-Sitemap: {{ site.baseurl | prepend: site.url }}/sitemap.xml
+Sitemap: https://fernandofreitasmoreira.github.io/feed.xml

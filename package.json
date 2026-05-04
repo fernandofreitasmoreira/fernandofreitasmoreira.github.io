@@ -1,6 +1,14 @@
 {
+  "name": "fernandofreitasmoreira.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site pessoal — vanilla static, Markdown + build script único.",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
   "devDependencies": {
-    "@shopify/prettier-plugin-liquid": "1.4.0",
-    "prettier": "3.1.1"
+    "marked": "^15.0.0"
   }
 }
