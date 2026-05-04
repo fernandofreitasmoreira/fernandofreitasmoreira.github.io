@@ -4,9 +4,19 @@
   <subtitle>Site pessoal — PhD em liveness detection, jogos de tabuleiro, comics, impressão 3D.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://fernandofreitasmoreira.github.io/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/"/>
-  <updated>2026-05-04T22:14:21.991Z</updated>
+  <updated>2026-05-04T22:49:54.287Z</updated>
   <id>https://fernandofreitasmoreira.github.io/</id>
   <author><name>Fernando Moreira</name></author>
+  <entry>
+    <title>Mapa para um puzzle vivo</title>
+    <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/phd/mapa-puzzle-vivo/"/>
+    <id>https://fernandofreitasmoreira.github.io/phd/mapa-puzzle-vivo/</id>
+    <updated>2026-05-04T00:00:00.000Z</updated>
+    <published>2026-05-04T00:00:00.000Z</published>
+    <category term="phd"/>
+    <summary>Um visualizador interactivo do ecossistema normativo do Capítulo 2 — porque tabelas estáticas não conseguem capturar o que não pára quieto.</summary>
+    <author><name>Fernando Moreira</name></author>
+  </entry>
   <entry>
     <title>Bem-vindo ao novo sítio</title>
     <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/outros/bem-vindo/"/>
