@@ -15,13 +15,14 @@ Servido por GitHub Pages a partir do `main` (root), com `.nojekyll` a desactivar
 ├── content/                  ← FONTE: tudo o que escreves
 │   ├── index.md              ← homepage (intro)
 │   ├── about.md              ← página /about/
-│   ├── phd/                  ← secção 1
-│   │   └── 2026-05-04-bem-vindo/
-│   │       ├── index.md      ← post (Markdown)
-│   │       └── *.webp        ← imagens co-localizadas
+│   ├── phd/                  ← secção 1 (vazia)
 │   ├── boardgames/           ← secção 2 (vazia)
 │   ├── comics/               ← secção 3 (vazia)
-│   └── 3dprint/              ← secção 4 (vazia)
+│   ├── 3dprint/              ← secção 4 (vazia)
+│   └── outros/               ← secção 5 — catch-all (meta, ferramentas, etc.)
+│       └── 2026-05-04-bem-vindo/
+│           ├── index.md      ← post (Markdown)
+│           └── *.webp        ← imagens co-localizadas
 ├── templates/                ← FONTE: HTML templates (5 ficheiros pequenos)
 │   ├── base.html             ← wrapper de todas as páginas
 │   ├── home.html             ← homepage
@@ -63,7 +64,7 @@ Pré-requisitos: **Node.js ≥ 20** (para `node:fs/promises` e `--watch` nativo)
 
 ### 1. Escolher secção e *slug*
 
-Secções existentes: `phd`, `boardgames`, `comics`, `3dprint`. O **slug** é a parte do URL — curto, *kebab-case*, sem acentos.
+Secções existentes: `phd`, `boardgames`, `comics`, `3dprint`, `outros`. O **slug** é a parte do URL — curto, *kebab-case*, sem acentos.
 
 Exemplo: vamos escrever sobre Spirit Island, em `boardgames/`, *slug* `resenha-spirit-island`.
 
@@ -189,6 +190,7 @@ sections: {
   boardgames: { title: 'Jogos de tabuleiro', description: '...' },
   comics: { title: 'Comics', description: '...' },
   '3dprint': { title: 'Impressão 3D', description: '...' },
+  outros: { title: 'Outros', description: '...' },
   livros: { title: 'Livros', description: 'Leituras, descobertas, listas.' },  // ← nova
 },
 ```

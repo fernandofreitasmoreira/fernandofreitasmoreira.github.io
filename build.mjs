@@ -27,6 +27,7 @@ const SITE = {
     boardgames: { title: 'Jogos de tabuleiro', description: 'Resenhas, sessões, listas e descobertas.' },
     comics: { title: 'Comics', description: 'Leituras, descobertas, recomendações.' },
     '3dprint': { title: 'Impressão 3D', description: 'Projectos, peças, aprendizagens, falhanços.' },
+    outros: { title: 'Outros', description: 'Tudo o que não cabe nas outras secções: meta, ferramentas, ideias avulsas.' },
   },
 };
 

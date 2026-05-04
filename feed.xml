@@ -4,16 +4,16 @@
   <subtitle>Site pessoal — PhD em liveness detection, jogos de tabuleiro, comics, impressão 3D.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://fernandofreitasmoreira.github.io/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/"/>
-  <updated>2026-05-04T19:35:09.999Z</updated>
+  <updated>2026-05-04T20:52:24.064Z</updated>
   <id>https://fernandofreitasmoreira.github.io/</id>
   <author><name>Fernando Moreira</name></author>
   <entry>
     <title>Bem-vindo ao novo sítio</title>
-    <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/phd/bem-vindo/"/>
-    <id>https://fernandofreitasmoreira.github.io/phd/bem-vindo/</id>
+    <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/outros/bem-vindo/"/>
+    <id>https://fernandofreitasmoreira.github.io/outros/bem-vindo/</id>
     <updated>2026-05-04T00:00:00.000Z</updated>
     <published>2026-05-04T00:00:00.000Z</published>
-    <category term="phd"/>
+    <category term="outros"/>
     <summary>Migrei o site pessoal de al-folio para algo vanilla. Esta é a primeira nota.</summary>
     <author><name>Fernando Moreira</name></author>
   </entry>
