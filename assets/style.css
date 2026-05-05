@@ -337,6 +337,12 @@ hr {
 .post-response p { margin: 0; }
 .post-response a { color: var(--accent); }
 
+/* Capítulos de livro têm a caixa de nav prev/next imediatamente antes do
+   bloco de resposta. Reforçar a separação para não ficar pegado. */
+.book-chapter + .post-response {
+  margin-top: 4rem;
+}
+
 /* ======================================================================== */
 /* Livros (book list, cover, chapters)                                      */
 /* ======================================================================== */
