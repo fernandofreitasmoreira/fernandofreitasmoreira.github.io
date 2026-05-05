@@ -22,11 +22,11 @@ Cada volume foi pensado para se ler **isoladamente** — não é preciso ter lid
 
 ## Como este livro encosta ao meu trabalho científico
 
-Faço investigação na Universidade do Minho em **deteção de prova de vida em dispositivos pessoais** — em inglês, *on-device liveness detection*. Em Português corrente: como é que o teu telemóvel pode ter a certeza que quem está à frente da câmara és **tu**, e que **estás vivo no momento em que a câmara dispara**, sem precisar de enviar a tua cara para o servidor de ninguém.
+Faço investigação na Universidade do Minho em **deteção de prova de vida em dispositivos pessoais** — em inglês, *on-device liveness detection*. Em Português corrente: como é que o teu telemóvel pode ter a certeza que quem está à frente da câmara és **tu**, e que **estás vivo no momento em que a câmara dispara**, sem precisar de enviar o teu rosto para o servidor de ninguém.
 
 A tese organiza-se em **quatro linhas de trabalho**, e cada uma delas tenta resolver uma fragilidade diferente do problema:
 
-- **MULTI-LIV — fusão multimodal.** Em vez de o sistema confiar só na cara, combina vários sentidos: rosto, voz, gesto, ritmo. Um atacante pode falsificar um, raramente falsifica todos ao mesmo tempo. Funciona como o cérebro humano, que reconhece uma pessoa pela conjugação de sinais e não por um detalhe isolado.
+- **MULTI-LIV — fusão multimodal.** Em vez de o sistema confiar só no rosto, combina vários sentidos: face, voz, gesto, ritmo. Um atacante pode falsificar um, raramente falsifica todos ao mesmo tempo. Funciona como o cérebro humano, que reconhece uma pessoa pela conjugação de sinais e não por um detalhe isolado.
 - **FLEET-LIV — aprendizagem federada.** Em vez de juntar os dados biométricos de toda a gente num servidor central (uma tentação de vigilância à espera de um abuso), o modelo aprende **localmente** em cada dispositivo, e só partilha o que aprendeu — não os dados em si. A privacidade fica desenhada na arquitectura do sistema, não delegada à boa-fé de quem o opera.
 - **ADVR-LIV — robustez adversarial.** Estes sistemas vão ser atacados por quem souber gerar *deepfakes*, máscaras 3D, vídeos sintéticos. A linha trabalha para que o detector continue a funcionar **quando o adversário sabe como o detector funciona** — uma exigência diferente, e mais dura, do que apenas «funcionar com inputs honestos».
 - **XAI-LIV — explicabilidade.** Quando o sistema te recusa, deves ter o direito de saber **porquê**. Não basta uma probabilidade; é preciso uma explicação acessível, em linguagem humana, que possas contestar. Isto deixou de ser uma cortesia e passou a ser uma obrigação legal — o AI Act europeu exige-o.

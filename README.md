@@ -81,7 +81,7 @@ git push                                # 3b. publicar
 
 GitHub Pages republica em **~30s**. Sem build no CI — o que está em `main` é exactamente o que é servido.
 
-**Pegadinha única do workflow:** se te esqueceres do `npm run build`, o `git status` só mostra as fontes alteradas e o site no Pages fica desactualizado. Regra: **build sempre antes do commit**.
+**Único senão do workflow:** se te esqueceres do `npm run build`, o `git status` só mostra as fontes alteradas e o site no Pages fica desactualizado. Regra: **build sempre antes do commit**.
 
 Para iterar com *live reload* enquanto escreves:
 
