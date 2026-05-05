@@ -4,9 +4,19 @@
   <subtitle>Site pessoal — PhD em liveness detection, jogos de tabuleiro, comics, impressão 3D.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://fernandofreitasmoreira.github.io/feed.xml"/>
   <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/"/>
-  <updated>2026-05-05T14:24:05.607Z</updated>
+  <updated>2026-05-05T14:55:29.029Z</updated>
   <id>https://fernandofreitasmoreira.github.io/</id>
   <author><name>Fernando Moreira</name></author>
+  <entry>
+    <title>A tese de 2010, em arquivo aberto</title>
+    <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/outros/tese-2010-redes-sociais/"/>
+    <id>https://fernandofreitasmoreira.github.io/outros/tese-2010-redes-sociais/</id>
+    <updated>2026-05-05T00:00:00.000Z</updated>
+    <published>2026-05-05T00:00:00.000Z</published>
+    <category term="outros"/>
+    <summary>Publico aqui a minha tese de mestrado de 2010 sobre redes sociais nas empresas. É arqueologia, não bibliografia — com uma nota auto-crítica e três vinhetas que ainda hoje cito mentalmente.</summary>
+    <author><name>Fernando Moreira</name></author>
+  </entry>
   <entry>
     <title>Mapa para um puzzle vivo</title>
     <link rel="alternate" type="text/html" href="https://fernandofreitasmoreira.github.io/phd/mapa-puzzle-vivo/"/>
