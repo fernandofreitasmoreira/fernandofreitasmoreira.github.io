@@ -16,7 +16,21 @@ Este sítio cobre quatro áreas:
 - **Comics** — leituras e descobertas; gosto de explorar tanto mainstream como autoral.
 - **Impressão 3D** — projectos, peças, falhanços. Aprendo em público.
 
-Não tenho redes sociais regulares (excepto LinkedIn, que actualizo pouco). Este é o sítio onde existo digitalmente.
+Este é o sítio onde existo digitalmente.
+
+## Os defaults que escolhi
+
+Não tenho redes sociais. **Excepto o LinkedIn** — e mesmo esse, sou honesto, mantenho-o mais por uma forma de obrigação profissional do que por convicção, e raramente o actualizo. Não saiu assim por desinteresse pelas pessoas; saiu assim por desconfiança dos canais. As redes são óptimas a manter-nos a falar; não são óptimas a deixar-nos pensar.
+
+Este sítio é a alternativa que escolhi. Aqui escrevo no meu ritmo, e fica registado num formato que **continua a ser meu** mesmo que amanhã o GitHub deixe de existir — Markdown, HTML, ficheiros que abrem em qualquer lado.
+
+A mesma lógica está por trás das escolhas técnicas. **Este sítio não usa *cookies*, *trackers* ou JavaScript no cliente.** Não é detalhe técnico, é postura: não preciso de saber quem és, e por isso não tento. Os *defaults* a que estamos habituados — Google Analytics em todo o lado, *cookie banners* a pedir permissão depois de já terem decidido — não são neutros. São escolhas tornadas invisíveis pela ubiquidade. Ausentar-se delas é hoje um gesto distinto, mesmo que devesse ser o oposto.
+
+Pela mesma razão, **o código deste sítio é livre (MIT) e o conteúdo é livre com partilha-igual (CC BY-SA 4.0)**. Quem quiser inspirar-se na arquitectura, pegar. Quem quiser citar ou traduzir, à vontade — desde que mantenha o mesmo gesto de abertura. Não há *paywalls*, nem *subscribe to read*, nem *premium tier*.
+
+Estas pequenas escolhas, isoladamente, não mudam o mundo. Em conjunto, e quando feitas com alguma consciência, são uma resposta tranquila à ideia de que o digital tem de ser sempre vigiado, monetizado e capturado. Acho que não tem.
+
+Os detalhes técnicos do que o sítio faz (e não faz) com os teus dados estão em [`/privacidade/`](/privacidade/).
 
 ## Contacto
 
@@ -28,6 +42,6 @@ Não tenho redes sociais regulares (excepto LinkedIn, que actualizo pouco). Este
 
 ## Sobre o sítio
 
-Construído em HTML/CSS vanilla com um *build script* Node de ~300 linhas. Sem frameworks, sem dependências de runtime, sem *trackers*. Conteúdo em Markdown (CommonMark), feed em Atom, metadata Open Graph. Tudo *open standard*, tudo migrável.
+Construído em HTML/CSS vanilla com um *build script* Node de ~300 linhas. Conteúdo em Markdown (CommonMark), feed em Atom, metadata Open Graph. Tudo *open standard*, tudo migrável.
 
 Código-fonte: [github.com/fernandofreitasmoreira/fernandofreitasmoreira.github.io](https://github.com/fernandofreitasmoreira/fernandofreitasmoreira.github.io).
