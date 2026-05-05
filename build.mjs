@@ -32,8 +32,13 @@ const SITE = {
   },
 };
 
+// Páginas estáticas no topo de content/ (cada *.md à raiz que não seja index.md)
+// É descoberto dinamicamente em discoverStaticPages() — esta lista é só para
+// limpeza de outputs entre builds.
+const STATIC_PAGES = ['about', 'privacidade'];
+
 // Output dirs gerados pelo build (limpos antes de cada build, para evitar lixo)
-const OUTPUT_DIRS = ['about', ...Object.keys(SITE.sections)];
+const OUTPUT_DIRS = [...STATIC_PAGES, ...Object.keys(SITE.sections)];
 
 // Sections that use post-style listing (excluding books which have their own pipeline)
 const POST_SECTIONS = Object.fromEntries(
@@ -255,22 +260,24 @@ async function buildHome(templates, posts) {
   console.log('  ✓ /');
 }
 
-async function buildAbout(templates) {
-  const aboutMd = join(CONTENT, 'about.md');
-  if (!existsSync(aboutMd)) return;
-  const { meta, body } = parseFrontmatter(await readText(aboutMd));
-  const inner = fillTemplate(templates.page, {
-    title: escapeHtml(meta.title || 'Sobre'),
-    content: renderMd(body),
-  });
-  const html = wrapInBase(templates, {
-    title: `${meta.title || 'Sobre'} · ${SITE.title}`,
-    description: meta.summary || SITE.description,
-    canonical: `${SITE.url}/about/`,
-    content: inner,
-  });
-  await writeText(join(ROOT, 'about', 'index.html'), html);
-  console.log('  ✓ /about/');
+async function buildStaticPages(templates) {
+  for (const slug of STATIC_PAGES) {
+    const md = join(CONTENT, `${slug}.md`);
+    if (!existsSync(md)) continue;
+    const { meta, body } = parseFrontmatter(await readText(md));
+    const inner = fillTemplate(templates.page, {
+      title: escapeHtml(meta.title || slug),
+      content: renderMd(body),
+    });
+    const html = wrapInBase(templates, {
+      title: `${meta.title || slug} · ${SITE.title}`,
+      description: meta.summary || SITE.description,
+      canonical: `${SITE.url}/${slug}/`,
+      content: inner,
+    });
+    await writeText(join(ROOT, slug, 'index.html'), html);
+    console.log(`  ✓ /${slug}/`);
+  }
 }
 
 async function buildSections(templates, allPosts) {
@@ -494,7 +501,7 @@ async function build() {
   const books = await discoverBooks();
   console.log(`  ${posts.length} post(s) · ${books.length} livro(s) (${books.reduce((n, b) => n + b.chapters.length, 0)} cap.)`);
   await buildHome(templates, posts);
-  await buildAbout(templates);
+  await buildStaticPages(templates);
   await buildSections(templates, posts);
   await buildPosts(templates, posts);
   await buildBooks(templates, books);

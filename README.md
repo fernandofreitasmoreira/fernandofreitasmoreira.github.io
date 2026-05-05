@@ -373,6 +373,18 @@ Os 5 *templates* em `templates/` são HTML puro com placeholders `{{nome}}`. Edi
 
 ---
 
+## Licenças
+
+Este repositório distingue claramente o que é **código** do que é **conteúdo escrito**, e aplica-lhes licenças diferentes:
+
+- **Código** (`build.mjs`, `templates/`, `assets/style.css`, infraestrutura de *build*) — sob licença [MIT](LICENSE). Reutilização livre com atribuição.
+- **Conteúdo escrito** (*posts*, capítulos de livros, prefácios, glossários, páginas estáticas) — sob licença [Creative Commons Atribuição-CompartilhaIgual 4.0 (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.pt). Detalhes e exclusões em [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md).
+- **Citações de terceiros** (epígrafes, excertos curtos) — pertencem aos respectivos autores e são reproduzidas ao abrigo do direito de citação.
+
+## Privacidade
+
+O site não usa *cookies*, *trackers* ou JavaScript no cliente. Detalhes técnicos em [`/privacidade/`](https://fernandofreitasmoreira.github.io/privacidade/).
+
 ## Princípios de design
 
 1. **Standards abertos** — Markdown (CommonMark), Atom, Open Graph, JSON-LD futuro. Conteúdo migrável para qualquer outro CMS sem perdas.
