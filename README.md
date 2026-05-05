@@ -15,11 +15,19 @@ Servido por GitHub Pages a partir do `main` (root), com `.nojekyll` a desactivar
 ├── content/                  ← FONTE: tudo o que escreves
 │   ├── index.md              ← homepage (intro)
 │   ├── about.md              ← página /about/
-│   ├── phd/                  ← secção 1 (vazia)
-│   ├── boardgames/           ← secção 2 (vazia)
-│   ├── comics/               ← secção 3 (vazia)
-│   ├── 3dprint/              ← secção 4 (vazia)
-│   └── outros/               ← secção 5 — catch-all (meta, ferramentas, etc.)
+│   ├── phd/                  ← secção 1 (posts curtos)
+│   │   └── 2026-05-04-mapa-puzzle-vivo/
+│   │       └── index.md      ← post (Markdown)
+│   ├── livros/               ← secção 2 — TEXTOS LONGOS (estrutura especial)
+│   │   └── es-mesmo-tu/
+│   │       ├── _meta.md      ← metadados do livro + prefácio
+│   │       ├── 00-introducao.md
+│   │       ├── 01-...md      ← capítulos numerados (NN-slug.md)
+│   │       └── ...
+│   ├── boardgames/           ← secção 3 (vazia)
+│   ├── comics/               ← secção 4 (vazia)
+│   ├── 3dprint/              ← secção 5 (vazia)
+│   └── outros/               ← secção 6 — catch-all (meta, ferramentas, etc.)
 │       └── 2026-05-04-bem-vindo/
 │           ├── index.md      ← post (Markdown)
 │           └── *.webp        ← imagens co-localizadas
@@ -89,7 +97,7 @@ O `--watch` reconstrói automaticamente quando mudas qualquer ficheiro em `conte
 
 ### 1. Escolher secção e *slug*
 
-Secções existentes: `phd`, `boardgames`, `comics`, `3dprint`, `outros`. O **slug** é a parte do URL — curto, *kebab-case*, sem acentos.
+Secções existentes: `phd`, `boardgames`, `comics`, `3dprint`, `outros`. (A secção `livros` tem estrutura própria — ver mais abaixo.) O **slug** é a parte do URL — curto, *kebab-case*, sem acentos.
 
 Exemplo: vamos escrever sobre Spirit Island, em `boardgames/`, *slug* `resenha-spirit-island`.
 
@@ -228,6 +236,80 @@ git push
 ```
 
 A nova secção aparece automaticamente na navegação e na lista da home.
+
+---
+
+## Adicionar um livro (textos longos)
+
+A secção `livros/` tem estrutura especial: cada livro é uma **pasta** com um `_meta.md` e capítulos numerados.
+
+### 1. Criar a pasta do livro
+
+```bash
+mkdir -p content/livros/titulo-do-livro
+```
+
+O nome da pasta é o *slug* do livro (kebab-case, sem acentos).
+
+### 2. Escrever `_meta.md` (metadata + prefácio)
+
+```markdown
+---
+title: "Título do Livro"
+subtitle: "Subtítulo opcional"
+author: "Fernando F. Moreira"
+year: "2026"
+version: "v0.6 — em revisão"
+version_note: "nota curta sobre o estado da versão"
+summary: "Sinopse de 1-2 frases."
+---
+
+## Sobre este livro
+
+Conteúdo Markdown do prefácio. Aparece na capa do livro entre os metadados e o sumário.
+```
+
+### 3. Escrever capítulos como ficheiros `NN-slug.md`
+
+Os capítulos são ordenados pelo número no início do nome do ficheiro. O `NN-` é tirado da URL (URL fica `/livros/titulo-do-livro/slug/`).
+
+```markdown
+---
+title: "Título do Capítulo"
+kind: capitulo
+---
+
+> *"Epígrafe original."*
+>
+> *Tradução em itálico.*
+
+Autor, fonte (ano)
+
+Texto do capítulo em Markdown normal...
+
+<aside class="chapter-takeaway">
+
+**O que fica deste capítulo**
+
+- ponto 1
+- ponto 2
+
+</aside>
+
+<p class="chapter-transition">No próximo capítulo, vamos ver...</p>
+```
+
+**`kind` aceita:** `introducao`, `capitulo` (default — número derivado do prefixo do ficheiro), `conclusao`, `apendice`.
+
+### 4. Convenções
+
+- **Epígrafe** — primeiro `blockquote` do capítulo + parágrafo seguinte como atribuição. CSS aplica estilo automaticamente.
+- **Caixa "O que fica"** — usa `<aside class="chapter-takeaway">` com linhas em branco antes e depois.
+- **Transição inter-capítulo** — usa `<p class="chapter-transition">` para o último parágrafo de transição.
+
+### 5. Publicar
+
+Aplica o [recipe universal](#publicar-recipe-universal). A capa do livro fica em `/livros/<slug>/`, cada capítulo em `/livros/<slug>/<chapter-slug>/`. A navegação prev/next gera-se automaticamente.
 
 ---
 

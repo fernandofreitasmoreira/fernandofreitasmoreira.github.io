@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>És mesmo tu? · Fernando Moreira</title>
+  <meta name="description" content="Volume 1 de uma colecção sobre cidadania digital. Sobre o que está em causa quando um sistema decide se somos mesmo nós, e o que se perde quando confundimos «ser humano» com «ser verificável».">
+  <meta property="og:title" content="És mesmo tu? · Fernando Moreira">
+  <meta property="og:description" content="Volume 1 de uma colecção sobre cidadania digital. Sobre o que está em causa quando um sistema decide se somos mesmo nós, e o que se perde quando confundimos «ser humano» com «ser verificável».">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fernandofreitasmoreira.github.io/livros/es-mesmo-tu/">
+  <link rel="canonical" href="https://fernandofreitasmoreira.github.io/livros/es-mesmo-tu/">
+  <link rel="alternate" type="application/atom+xml" title="Fernando Moreira" href="/feed.xml">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">Fernando Moreira</a>
+    <nav class="site-nav">
+      <a href="/phd/">PhD</a>
+      <a href="/livros/">Livros</a>
+      <a href="/boardgames/">Jogos de tabuleiro</a>
+      <a href="/comics/">Comics</a>
+      <a href="/3dprint/">Impressão 3D</a>
+      <a href="/outros/">Outros</a>
+      <a href="/about/">Sobre</a>
+    </nav>
+  </header>
+  <main>
+    <article class="book-cover">
+  <header class="book-cover-header">
+    <p class="book-cover-meta">Fernando F. Moreira · 2026</p>
+    <h1 class="book-cover-title">És mesmo tu?</h1>
+    <p class="book-subtitle">Identidade, reconhecimento e o que significa ser pessoa numa era que tudo verifica</p>
+  </header>
+
+  <aside class="version-banner" role="note">
+  <strong>v0.6 — em revisão</strong> — esta é uma versão pública em aberto, ainda sujeita a revisão; agradeço comentários e correcções
+</aside>
+
+  <p class="book-summary-text">Volume 1 de uma colecção sobre cidadania digital. Sobre o que está em causa quando um sistema decide se somos mesmo nós, e o que se perde quando confundimos «ser humano» com «ser verificável».</p>
+
+  <section class="book-preface">
+    <h2>Sobre este livro e os que se seguem</h2>
+<p>Comecei a escrever este livro enquanto preparava o doutoramento. Queria perceber, para mim antes de mais, o que é que está em jogo quando entregamos a uma máquina a tarefa de decidir se somos quem dizemos ser. Comecei pelas tecnologias, mas a pergunta foi-se transformando: deixou de ser técnica e passou a ser, ao mesmo tempo, política, jurídica, e filosófica.</p>
+<p>O livro saiu maior do que esperava — e percebi, enquanto o escrevia, que <strong>não cabia num só volume</strong>. Há quatro perguntas que me perseguem e que se prendem à mesma trama: a forma como vivemos, somos vistos, e somos reconhecidos no espaço digital. Cada uma delas dará um livro. <strong>Este é o primeiro de quatro.</strong></p>
+<ul>
+<li><strong>Volume 1 — <em>És mesmo tu?</em></strong>  Sobre <strong>identidade e reconhecimento</strong>: como provamos quem somos a sistemas que não nos vêem, e o que se perde quando confundimos a pessoa com o sinal biométrico. <em>(é o livro que tens à frente)</em></li>
+<li><strong>Volume 2 — <em>Estás a ser visto?</em></strong>  Sobre <strong>vigilância, privacidade e liberdade arquitectural</strong>: o que muda quando tudo o que fazemos deixa rasto, e quem tem o poder de o ler.</li>
+<li>Volumes 3 e 4 — <em>em planeamento</em>. Continuarei o arco em torno da cidadania digital. Os títulos serão anunciados quando estiverem maduros.</li>
+</ul>
+<p>Cada volume foi pensado para se ler <strong>isoladamente</strong> — não é preciso ter lido o anterior para o seguinte fazer sentido. Mas quem ler os quatro terá, no fim, uma pequena teoria coerente do que significa ser cidadão livre num mundo que tudo verifica.</p>
+<h2>Como este livro encosta ao meu trabalho científico</h2>
+<p>Faço investigação na Universidade do Minho em <strong>deteção de prova de vida em dispositivos pessoais</strong> — em inglês, <em>on-device liveness detection</em>. Em Português corrente: como é que o teu telemóvel pode ter a certeza que quem está à frente da câmara és <strong>tu</strong>, e que <strong>estás vivo no momento em que a câmara dispara</strong>, sem precisar de enviar a tua cara para o servidor de ninguém.</p>
+<p>A tese organiza-se em <strong>quatro linhas de trabalho</strong>, e cada uma delas tenta resolver uma fragilidade diferente do problema:</p>
+<ul>
+<li><strong>MULTI-LIV — fusão multimodal.</strong> Em vez de o sistema confiar só na cara, combina vários sentidos: rosto, voz, gesto, ritmo. Um atacante pode falsificar um, raramente falsifica todos ao mesmo tempo. Funciona como o cérebro humano, que reconhece uma pessoa pela conjugação de sinais e não por um detalhe isolado.</li>
+<li><strong>FLEET-LIV — aprendizagem federada.</strong> Em vez de juntar os dados biométricos de toda a gente num servidor central (uma tentação de vigilância à espera de um abuso), o modelo aprende <strong>localmente</strong> em cada dispositivo, e só partilha o que aprendeu — não os dados em si. A privacidade fica desenhada na arquitectura do sistema, não delegada à boa-fé de quem o opera.</li>
+<li><strong>ADVR-LIV — robustez adversarial.</strong> Estes sistemas vão ser atacados por quem souber gerar <em>deepfakes</em>, máscaras 3D, vídeos sintéticos. A linha trabalha para que o detector continue a funcionar <strong>quando o adversário sabe como o detector funciona</strong> — uma exigência diferente, e mais dura, do que apenas «funcionar com inputs honestos».</li>
+<li><strong>XAI-LIV — explicabilidade.</strong> Quando o sistema te recusa, deves ter o direito de saber <strong>porquê</strong>. Não basta uma probabilidade; é preciso uma explicação acessível, em linguagem humana, que possas contestar. Isto deixou de ser uma cortesia e passou a ser uma obrigação legal — o AI Act europeu exige-o.</li>
+</ul>
+<p>Estas quatro linhas combinam-se num <strong>artefacto integrador final</strong> que é a contribuição principal da tese: um sistema único que cumpre os quatro requisitos em simultâneo, alinhado com o quadro normativo europeu (AI Act, RGPD, eIDAS 2.0, NIS 2, CRA).</p>
+<p><strong>E o arco do livro?</strong> Cada volume desta colecção encosta naturalmente a uma das quatro linhas. Não é uma exposição da tese para leigos — é uma reflexão para qualquer cidadão sobre as perguntas que cada linha de investigação tenta tecnicamente responder. A tese e o livro <strong>partilham preocupações</strong>, não conteúdos. Quem lê a tese encontra equações e referências; quem lê o livro encontra histórias, contradições, e perguntas em aberto.</p>
+<h2>A quem é dirigido</h2>
+<p>A qualquer pessoa que use serviços digitais e queira perceber o que se passa nos bastidores quando um sistema decide se a deixa entrar, se lhe abre uma conta, se a reconhece. Não é necessário conhecimento técnico prévio — onde aparecem termos técnicos, são explicados; onde aparecem referências jurídicas, são contextualizadas. O <strong>glossário</strong> no final, organizado por conceitos, está pensado para ser consultado durante a leitura sempre que algum termo escapar.</p>
+<h2>Sobre a forma</h2>
+<p>Tentei imitar, com respeito, a forma como o Carl Sagan escreveu sobre ciência durante toda a vida — partir de uma história concreta, ir buscar a técnica quando faz falta, e voltar à pergunta humana antes de fechar o capítulo. Cada capítulo abre com uma epígrafe (de autores que me ajudaram a pensar — Le Guin, Philip K. Dick, Hannah Arendt, Simone Weil, Walter Benjamin, Shoshana Zuboff, e o próprio Sagan no fecho). Cada capítulo termina com um pequeno painel — <em>o que fica deste capítulo</em> — para ajudar a fixar as ideias-chave, e uma transição para o seguinte.</p>
+<h2>Versão e revisão pública</h2>
+<p>Esta é a <strong>versão 0.6</strong>, ainda em revisão. Publico-a em aberto antes de a fechar porque é assim que aprendi com investigadores que admiro (Donald Knuth, Richard Stallman, e tantos outros): é a forma de o livro melhorar mais depressa, e a forma honesta de avançar quando se está ainda a aprender o ofício. Se encontrares uma gralha, uma imprecisão técnica ou jurídica, uma passagem confusa, ou simplesmente quiseres dar uma opinião, ela é bem-vinda — podes contactar-me pelos canais listados em <a href="/about/">/about/</a>.</p>
+<p>— <em>Fernando, Maio de 2026</em></p>
+
+  </section>
+
+  <section class="book-toc">
+    <h2>Sumário</h2>
+    <ol class="toc-list">
+      <li class="toc-item toc-introducao">
+  <a href="/livros/es-mesmo-tu/introducao/">
+    <span class="toc-kind">Introdução</span>
+    <span class="toc-title">A Identidade em Crise</span>
+  </a>
+</li>
+<li class="toc-item toc-capitulo">
+  <a href="/livros/es-mesmo-tu/o-desafio-da-prova-digital/">
+    <span class="toc-kind">Capítulo 1</span>
+    <span class="toc-title">O Desafio da Prova Digital</span>
+  </a>
+</li>
+<li class="toc-item toc-capitulo">
+  <a href="/livros/es-mesmo-tu/o-estado-como-garantia/">
+    <span class="toc-kind">Capítulo 2</span>
+    <span class="toc-title">O Estado como Garantia?</span>
+  </a>
+</li>
+<li class="toc-item toc-capitulo">
+  <a href="/livros/es-mesmo-tu/quando-a-maquina-decide/">
+    <span class="toc-kind">Capítulo 3</span>
+    <span class="toc-title">Quando a Máquina Decide</span>
+  </a>
+</li>
+<li class="toc-item toc-capitulo">
+  <a href="/livros/es-mesmo-tu/deepfakes-e-impostores/">
+    <span class="toc-kind">Capítulo 4</span>
+    <span class="toc-title">Deepfakes e Impostores</span>
+  </a>
+</li>
+<li class="toc-item toc-capitulo">
+  <a href="/livros/es-mesmo-tu/a-nova-identidade-europeia/">
+    <span class="toc-kind">Capítulo 5</span>
+    <span class="toc-title">A Nova Identidade Europeia</span>
+  </a>
+</li>
+<li class="toc-item toc-conclusao">
+  <a href="/livros/es-mesmo-tu/conclusao/">
+    <span class="toc-kind">Conclusão</span>
+    <span class="toc-title">És Tu. Mas És Livre?</span>
+  </a>
+</li>
+<li class="toc-item toc-apendice">
+  <a href="/livros/es-mesmo-tu/referencias/">
+    <span class="toc-kind">Apêndice</span>
+    <span class="toc-title">Referências</span>
+  </a>
+</li>
+<li class="toc-item toc-apendice">
+  <a href="/livros/es-mesmo-tu/glossario/">
+    <span class="toc-kind">Apêndice</span>
+    <span class="toc-title">Guia de Conceitos</span>
+  </a>
+</li>
+    </ol>
+  </section>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <p>© 2026 Fernando Moreira · <a href="/feed.xml">Atom</a> · <a href="https://github.com/fernandofreitasmoreira">GitHub</a> · <a href="https://www.linkedin.com/in/fernandofreitasmoreira/">LinkedIn</a></p>
+  </footer>
+</body>
+</html>

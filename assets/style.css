@@ -314,11 +314,318 @@ hr {
   border-bottom: 1px solid var(--border);
 }
 
+/* ======================================================================== */
+/* Livros (book list, cover, chapters)                                      */
+/* ======================================================================== */
+
+/* Lista de livros (/livros/) */
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+}
+.book-card {
+  border-bottom: 1px solid var(--border-soft);
+  padding: 1.5rem 0;
+}
+.book-card:last-child { border-bottom: 0; }
+.book-card a {
+  color: var(--text);
+  display: block;
+}
+.book-card a:hover h3 { color: var(--accent); }
+.book-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0 0 0.4rem;
+}
+.book-card-meta {
+  color: var(--text-mute);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.4rem;
+}
+.book-card-subtitle {
+  font-style: italic;
+  color: var(--text-soft);
+  margin: 0 0 0.5rem;
+}
+
+/* Capa do livro (/livros/<book>/) */
+
+.book-cover {
+  text-align: left;
+}
+.book-cover-header {
+  text-align: center;
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.book-cover-meta {
+  color: var(--text-mute);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem;
+}
+.book-cover-title {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+.book-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 400;
+}
+.book-summary-text {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  margin: 0 0 2rem;
+  font-style: italic;
+}
+
+.version-banner {
+  display: block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin: 0 0 2rem;
+  font-size: 0.92rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.version-banner strong { font-weight: 600; }
+
+.book-preface {
+  font-family: var(--serif);
+  margin-bottom: 2.5rem;
+}
+.book-preface h2,
+.book-preface h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+.book-toc h2 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  margin: 2rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.toc-list {
+  list-style: none;
+  counter-reset: toc;
+  padding: 0;
+  margin: 0;
+}
+.toc-item {
+  border-bottom: 1px solid var(--border-soft);
+}
+.toc-item:last-child { border-bottom: 0; }
+.toc-item a {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  color: var(--text);
+}
+.toc-item a:hover { text-decoration: none; }
+.toc-item a:hover .toc-title { color: var(--accent); }
+.toc-kind {
+  color: var(--text-mute);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.toc-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+}
+.toc-introducao .toc-title,
+.toc-conclusao .toc-title {
+  font-style: italic;
+}
+.toc-apendice {
+  opacity: 0.85;
+}
+
+/* Capítulo (/livros/<book>/<chapter>/) */
+
+.book-context {
+  font-size: 0.875rem;
+  margin: 0 0 1.5rem;
+}
+.book-context a { color: var(--text-mute); }
+.book-context a:hover { color: var(--accent); }
+
+.chapter-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+.chapter-kind {
+  color: var(--text-mute);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5rem;
+}
+.chapter-header h1 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.chapter-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-soft);
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.chapter-body {
+  font-family: var(--serif);
+  font-size: 1.075rem;
+  line-height: 1.7;
+}
+.chapter-body h2,
+.chapter-body h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+}
+.chapter-body h2 { font-size: 1.3rem; margin-top: 2.5rem; }
+.chapter-body h3 { font-size: 1.1rem; margin-top: 2rem; }
+
+/* Epigrafe — primeiro blockquote do capítulo + parágrafo da fonte */
+.chapter-body > blockquote:first-of-type {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-soft);
+  border-left: 0;
+  margin: 0 0 0.5rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--accent);
+  font-size: 1.05rem;
+}
+.chapter-body > blockquote:first-of-type + p {
+  color: var(--text-mute);
+  font-size: 0.875rem;
+  font-family: var(--sans);
+  font-style: normal;
+  margin: 0 0 2.5rem 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+/* Caixa "O que fica deste capítulo" */
+.chapter-takeaway {
+  background: var(--bg-2);
+  border-left: 3px solid var(--accent);
+  padding: 1.25rem 1.5rem 1rem;
+  margin: 2.5rem 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: var(--sans);
+  font-size: 0.96rem;
+}
+.chapter-takeaway p:first-child {
+  margin-top: 0;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+.chapter-takeaway ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.chapter-takeaway li {
+  margin-bottom: 0.4rem;
+}
+.chapter-takeaway li:last-child { margin-bottom: 0; }
+
+/* Transição inter-capítulo */
+.chapter-transition {
+  font-style: italic;
+  color: var(--text-soft);
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Navegação prev/next */
+.chapter-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.chapter-prev,
+.chapter-next {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.15s, background 0.15s;
+}
+.chapter-prev:hover,
+.chapter-next:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.chapter-next { text-align: right; align-items: flex-end; }
+.chapter-prev { text-align: left; }
+.nav-label {
+  color: var(--text-mute);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+@media (max-width: 540px) {
+  .chapter-nav { grid-template-columns: 1fr; }
+  .chapter-next { text-align: left; align-items: flex-start; }
+  .book-cover-title { font-size: 2rem; }
+  .chapter-header h1 { font-size: 1.8rem; }
+  .toc-item a { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
 /* Print: clean defaults */
 
 @media print {
   .site-header,
-  .site-footer { display: none; }
+  .site-footer,
+  .chapter-nav,
+  .book-context,
+  .version-banner { display: none; }
   main { max-width: none; padding: 0; }
   a { color: inherit; text-decoration: none; }
 }

@@ -24,6 +24,7 @@ const SITE = {
   author: 'Fernando Moreira',
   sections: {
     phd: { title: 'PhD', description: 'Investigação em liveness detection on-device. Universidade do Minho.' },
+    livros: { title: 'Livros', description: 'Textos longos e ensaios em formato de livro, em torno da cidadania digital.', kind: 'books' },
     boardgames: { title: 'Jogos de tabuleiro', description: 'Críticas, sessões, listas e descobertas.' },
     comics: { title: 'Comics', description: 'Leituras, descobertas, recomendações.' },
     '3dprint': { title: 'Impressão 3D', description: 'Projectos, peças, aprendizagens, falhanços.' },
@@ -33,6 +34,11 @@ const SITE = {
 
 // Output dirs gerados pelo build (limpos antes de cada build, para evitar lixo)
 const OUTPUT_DIRS = ['about', ...Object.keys(SITE.sections)];
+
+// Sections that use post-style listing (excluding books which have their own pipeline)
+const POST_SECTIONS = Object.fromEntries(
+  Object.entries(SITE.sections).filter(([, s]) => s.kind !== 'books')
+);
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -103,7 +109,7 @@ async function copyDir(src, dst, skip = new Set()) {
 
 async function discoverPosts() {
   const posts = [];
-  for (const section of Object.keys(SITE.sections)) {
+  for (const section of Object.keys(POST_SECTIONS)) {
     const sdir = join(CONTENT, section);
     if (!existsSync(sdir)) continue;
     for (const entry of await readdir(sdir, { withFileTypes: true })) {
@@ -127,6 +133,56 @@ async function discoverPosts() {
   }
   posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   return posts;
+}
+
+// Books: content/livros/<book>/_meta.md + chapter files NN-slug.md
+async function discoverBooks() {
+  const books = [];
+  const livrosDir = join(CONTENT, 'livros');
+  if (!existsSync(livrosDir)) return books;
+  for (const entry of await readdir(livrosDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const bookDir = join(livrosDir, entry.name);
+    const metaPath = join(bookDir, '_meta.md');
+    if (!existsSync(metaPath)) continue;
+    const { meta, body: preface } = parseFrontmatter(await readText(metaPath));
+    if (meta.draft === 'true') continue;
+    const chapters = [];
+    for (const file of await readdir(bookDir)) {
+      if (!file.endsWith('.md') || file === '_meta.md') continue;
+      const raw = await readText(join(bookDir, file));
+      const { meta: cmeta, body: cbody } = parseFrontmatter(raw);
+      if (cmeta.draft === 'true') continue;
+      const slugFile = file.replace(/\.md$/, '');           // 01-titulo
+      const slug = slugFile.replace(/^\d+-/, '');            // titulo (URL)
+      const order = parseInt(slugFile.match(/^(\d+)/)?.[1] || '999', 10);
+      chapters.push({
+        slugFile,
+        slug,
+        order,
+        kind: cmeta.kind || 'capitulo',     // introducao | capitulo | conclusao | apendice
+        number: cmeta.number || '',         // override do label
+        title: cmeta.title || slug,
+        subtitle: cmeta.subtitle || '',
+        summary: cmeta.summary || '',
+        body: cbody,
+      });
+    }
+    chapters.sort((a, b) => a.order - b.order);
+    books.push({
+      slug: entry.name,
+      title: meta.title || entry.name,
+      subtitle: meta.subtitle || '',
+      author: meta.author || SITE.author,
+      year: meta.year || '',
+      version: meta.version || '',
+      version_note: meta.version_note || '',
+      summary: meta.summary || '',
+      preface,
+      chapters,
+    });
+  }
+  return books;
 }
 
 // ---------------------------------------------------------------------------
@@ -218,7 +274,7 @@ async function buildAbout(templates) {
 }
 
 async function buildSections(templates, allPosts) {
-  for (const [slug, s] of Object.entries(SITE.sections)) {
+  for (const [slug, s] of Object.entries(POST_SECTIONS)) {
     const posts = allPosts.filter((p) => p.section === slug);
     const list = posts.length
       ? posts.map(renderPostCard).join('\n')
@@ -236,6 +292,123 @@ async function buildSections(templates, allPosts) {
     });
     await writeText(join(ROOT, slug, 'index.html'), html);
     console.log(`  ✓ /${slug}/`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Books
+
+function chapterKindLabel(ch) {
+  if (ch.number) return ch.number;
+  if (ch.kind === 'introducao') return 'Introdução';
+  if (ch.kind === 'conclusao') return 'Conclusão';
+  if (ch.kind === 'apendice') return 'Apêndice';
+  // numbered chapter — use the order from filename
+  return `Capítulo ${ch.order}`;
+}
+
+async function buildLivrosIndex(templates, books) {
+  const list = books.length
+    ? books.map((b) => `<article class="book-card">
+  <a href="/livros/${b.slug}/">
+    <p class="book-card-meta">${escapeHtml(b.author)}${b.year ? ' · ' + escapeHtml(b.year) : ''}${b.version ? ' · ' + escapeHtml(b.version) : ''}</p>
+    <h3>${escapeHtml(b.title)}</h3>
+    ${b.subtitle ? `<p class="book-card-subtitle">${escapeHtml(b.subtitle)}</p>` : ''}
+    ${b.summary ? `<p>${escapeHtml(b.summary)}</p>` : ''}
+  </a>
+</article>`).join('\n')
+    : '<p class="empty">Ainda sem livros publicados.</p>';
+  const inner = fillTemplate(templates.livrosIndex, {
+    section_title: 'Livros',
+    section_description: SITE.sections.livros.description,
+    books: list,
+  });
+  const html = wrapInBase(templates, {
+    title: `Livros · ${SITE.title}`,
+    description: SITE.sections.livros.description,
+    canonical: `${SITE.url}/livros/`,
+    content: inner,
+  });
+  await writeText(join(ROOT, 'livros', 'index.html'), html);
+  console.log('  ✓ /livros/');
+}
+
+async function buildBookCover(templates, book) {
+  const tocItems = book.chapters.map((ch) => {
+    const label = chapterKindLabel(ch);
+    return `<li class="toc-item toc-${ch.kind}">
+  <a href="/livros/${book.slug}/${ch.slug}/">
+    <span class="toc-kind">${escapeHtml(label)}</span>
+    <span class="toc-title">${escapeHtml(ch.title)}</span>
+  </a>
+</li>`;
+  }).join('\n');
+
+  const versionBanner = book.version
+    ? `<aside class="version-banner" role="note">
+  <strong>${escapeHtml(book.version)}</strong>${book.version_note ? ' — ' + escapeHtml(book.version_note) : ''}
+</aside>`
+    : '';
+
+  const inner = fillTemplate(templates.bookCover, {
+    title: escapeHtml(book.title),
+    subtitle_block: book.subtitle ? `<p class="book-subtitle">${escapeHtml(book.subtitle)}</p>` : '',
+    author: escapeHtml(book.author),
+    year: book.year ? escapeHtml(book.year) : '',
+    year_block: book.year ? ` · ${escapeHtml(book.year)}` : '',
+    version_banner: versionBanner,
+    summary: book.summary ? `<p class="book-summary-text">${escapeHtml(book.summary)}</p>` : '',
+    preface: renderMd(book.preface || ''),
+    chapters_list: tocItems,
+  });
+  const html = wrapInBase(templates, {
+    title: `${book.title} · ${SITE.title}`,
+    description: book.summary || book.subtitle || SITE.description,
+    canonical: `${SITE.url}/livros/${book.slug}/`,
+    content: inner,
+  });
+  await writeText(join(ROOT, 'livros', book.slug, 'index.html'), html);
+  console.log(`  ✓ /livros/${book.slug}/`);
+}
+
+async function buildBookChapter(templates, book, chapter, prev, next) {
+  const prevBlock = prev
+    ? `<a href="/livros/${book.slug}/${prev.slug}/" class="chapter-prev"><span class="nav-label">Anterior</span><span class="nav-title">${escapeHtml(prev.title)}</span></a>`
+    : `<a href="/livros/${book.slug}/" class="chapter-prev"><span class="nav-label">Voltar</span><span class="nav-title">Capa do livro</span></a>`;
+  const nextBlock = next
+    ? `<a href="/livros/${book.slug}/${next.slug}/" class="chapter-next"><span class="nav-label">Próximo</span><span class="nav-title">${escapeHtml(next.title)}</span></a>`
+    : `<a href="/livros/${book.slug}/" class="chapter-next"><span class="nav-label">Concluído</span><span class="nav-title">Voltar à capa</span></a>`;
+
+  const inner = fillTemplate(templates.bookChapter, {
+    book_slug: book.slug,
+    book_title: escapeHtml(book.title),
+    chapter_kind: escapeHtml(chapterKindLabel(chapter)),
+    title: escapeHtml(chapter.title),
+    subtitle_block: chapter.subtitle ? `<p class="chapter-subtitle">${escapeHtml(chapter.subtitle)}</p>` : '',
+    content: renderMd(chapter.body),
+    prev: prevBlock,
+    next: nextBlock,
+  });
+  const html = wrapInBase(templates, {
+    title: `${chapter.title} · ${book.title} · ${SITE.title}`,
+    description: chapter.summary || chapter.subtitle || book.summary,
+    canonical: `${SITE.url}/livros/${book.slug}/${chapter.slug}/`,
+    content: inner,
+  });
+  await writeText(join(ROOT, 'livros', book.slug, chapter.slug, 'index.html'), html);
+  console.log(`  ✓ /livros/${book.slug}/${chapter.slug}/`);
+}
+
+async function buildBooks(templates, books) {
+  await buildLivrosIndex(templates, books);
+  for (const book of books) {
+    await buildBookCover(templates, book);
+    for (let i = 0; i < book.chapters.length; i++) {
+      const ch = book.chapters[i];
+      const prev = i > 0 ? book.chapters[i - 1] : null;
+      const next = i < book.chapters.length - 1 ? book.chapters[i + 1] : null;
+      await buildBookChapter(templates, book, ch, prev, next);
+    }
   }
 }
 
@@ -312,14 +485,19 @@ async function build() {
     list: await readText(join(TEMPLATES, 'list.html')),
     post: await readText(join(TEMPLATES, 'post.html')),
     page: await readText(join(TEMPLATES, 'page.html')),
+    livrosIndex: await readText(join(TEMPLATES, 'livros-index.html')),
+    bookCover: await readText(join(TEMPLATES, 'book-cover.html')),
+    bookChapter: await readText(join(TEMPLATES, 'book-chapter.html')),
   };
   await cleanOutputs();
   const posts = await discoverPosts();
-  console.log(`  ${posts.length} post(s)`);
+  const books = await discoverBooks();
+  console.log(`  ${posts.length} post(s) · ${books.length} livro(s) (${books.reduce((n, b) => n + b.chapters.length, 0)} cap.)`);
   await buildHome(templates, posts);
   await buildAbout(templates);
   await buildSections(templates, posts);
   await buildPosts(templates, posts);
+  await buildBooks(templates, books);
   await buildFeed(posts);
   console.log(`done em ${Date.now() - t0}ms.\n`);
 }

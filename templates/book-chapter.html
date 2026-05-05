@@ -1,0 +1,18 @@
+<article class="book-chapter">
+  <p class="book-context"><a href="/livros/{{book_slug}}/">← {{book_title}}</a></p>
+
+  <header class="chapter-header">
+    <p class="chapter-kind">{{chapter_kind}}</p>
+    <h1>{{title}}</h1>
+    {{subtitle_block}}
+  </header>
+
+  <div class="chapter-body">
+    {{content}}
+  </div>
+
+  <nav class="chapter-nav" aria-label="Navegação do livro">
+    {{prev}}
+    {{next}}
+  </nav>
+</article>
