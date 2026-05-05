@@ -22,6 +22,7 @@ const SITE = {
   url: 'https://fernandofreitasmoreira.github.io',
   lang: 'pt-PT',
   author: 'Fernando Moreira',
+  email: 'fernando.freitas.moreira@gmail.com',
   sections: {
     phd: { title: 'PhD', description: 'Investigação em liveness detection on-device. Universidade do Minho.' },
     livros: { title: 'Livros', description: 'Textos longos e ensaios em formato de livro, em torno da cidadania digital.', kind: 'books' },
@@ -35,7 +36,7 @@ const SITE = {
 // Páginas estáticas no topo de content/ (cada *.md à raiz que não seja index.md)
 // É descoberto dinamicamente em discoverStaticPages() — esta lista é só para
 // limpeza de outputs entre builds.
-const STATIC_PAGES = ['about', 'privacidade'];
+const STATIC_PAGES = ['about', 'privacidade', 'conversas'];
 
 // Output dirs gerados pelo build (limpos antes de cada build, para evitar lixo)
 const OUTPUT_DIRS = [...STATIC_PAGES, ...Object.keys(SITE.sections)];
@@ -208,6 +209,16 @@ function renderPostCard(p) {
     ${p.summary ? `<p>${escapeHtml(p.summary)}</p>` : ''}
   </a>
 </article>`;
+}
+
+// Bloco de convite a responder por email — colocado no fim de cada post
+// e capítulo de livro. O subject é pré-preenchido para facilitar a
+// triagem quando os emails chegam.
+function renderResponseBlock(contextLabel) {
+  const subject = encodeURIComponent(`Sobre: ${contextLabel}`);
+  return `<aside class="post-response">
+<p>Tens algo a dizer sobre este texto? <a href="mailto:${SITE.email}?subject=${subject}">Escreve-me</a>. As melhores trocas — com permissão tua — aparecerão em <a href="/conversas/">/conversas/</a>.</p>
+</aside>`;
 }
 
 function wrapInBase(templates, vars) {
@@ -395,6 +406,7 @@ async function buildBookChapter(templates, book, chapter, prev, next) {
     content: renderMd(chapter.body),
     prev: prevBlock,
     next: nextBlock,
+    response_block: renderResponseBlock(`${book.title} — ${chapter.title}`),
   });
   const html = wrapInBase(templates, {
     title: `${chapter.title} · ${book.title} · ${SITE.title}`,
@@ -429,6 +441,7 @@ async function buildPosts(templates, posts) {
       section_slug: p.section,
       summary_block: p.summary ? `<p class="post-summary">${escapeHtml(p.summary)}</p>` : '',
       content: renderMd(p.body),
+      response_block: renderResponseBlock(p.title),
     });
     const html = wrapInBase(templates, {
       title: `${p.title} · ${SITE.title}`,

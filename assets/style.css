@@ -323,6 +323,20 @@ hr {
   border-bottom: 1px solid var(--border);
 }
 
+/* Bloco de convite a responder (fim de posts e capítulos) */
+
+.post-response {
+  margin: 3rem 0 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-2);
+  border-left: 3px solid var(--border);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+.post-response p { margin: 0; }
+.post-response a { color: var(--accent); }
+
 /* ======================================================================== */
 /* Livros (book list, cover, chapters)                                      */
 /* ======================================================================== */

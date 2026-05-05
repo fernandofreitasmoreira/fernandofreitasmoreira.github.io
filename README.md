@@ -313,6 +313,36 @@ Aplica o [recipe universal](#publicar-recipe-universal). A capa do livro fica em
 
 ---
 
+## Página `/conversas/` — correspondência curada
+
+A página `/conversas/` recolhe, ao longo do tempo, trocas seleccionadas com leitores que escreveram por email a propósito de algo publicado no sítio. Cada *post* e cada capítulo de livro tem um pequeno bloco no fim a convidar leitores a escrever, com `mailto:` pré-preenchido com o título do texto no *subject*.
+
+### Adicionar uma nova troca
+
+1. Recebes um email valioso por causa de um post/capítulo.
+2. Pedes e obténs autorização explícita do autor para publicar (incluindo nome/anónimo/*handle* — como ele preferir).
+3. Edita [`content/conversas.md`](content/conversas.md) e adiciona uma nova secção (cronológica inversa, mais recente em cima):
+
+   ```markdown
+   ## YYYY-MM-DD — Re: [título do post]
+
+   **De:** [Nome ou identificador escolhido pelo autor da carta]
+   **Sobre:** [Título do post original](/seccao/slug/)
+
+   > Excerto da mensagem original, em blockquote.
+   > Pode ter vários parágrafos.
+
+   **Resposta:**
+
+   Texto da minha resposta, em parágrafos normais.
+   ```
+
+4. Aplica o [recipe universal](#publicar-recipe-universal): build, commit, push.
+
+A página está deliberadamente lenta. Não é um sistema de comentários — é arquivo curado, em ritmo humano.
+
+---
+
 ## Editar páginas estáticas (home, about)
 
 - **Home:** edita `content/index.md`. O conteúdo aparece dentro da secção *intro* da homepage. As listas de secções e posts recentes são geradas automaticamente.

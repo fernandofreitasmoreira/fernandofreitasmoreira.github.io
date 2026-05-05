@@ -26,6 +26,8 @@ Este sítio é a alternativa que escolhi. Aqui escrevo no meu ritmo, e fica regi
 
 A mesma lógica está por trás das escolhas técnicas. **Este sítio não usa *cookies*, *trackers* ou JavaScript no cliente.** Não é detalhe técnico, é postura: não preciso de saber quem és, e por isso não tento. Os *defaults* a que estamos habituados — Google Analytics em todo o lado, *cookie banners* a pedir permissão depois de já terem decidido — não são neutros. São escolhas tornadas invisíveis pela ubiquidade. Ausentar-se delas é hoje um gesto distinto, mesmo que devesse ser o oposto.
 
+Pelo mesmo princípio, **não há comentários neste sítio**. Quem queira responder a alguma coisa que escrevi, pode escrever-me — leio tudo, respondo quando consigo. As trocas que fazem sentido publicar (com permissão de quem escreveu) ficam em [/conversas/](/conversas/). É uma forma lenta, e tem o ritmo certo.
+
 Pela mesma razão, **o código deste sítio é livre (MIT) e o conteúdo é livre com partilha-igual (CC BY-SA 4.0)**. Quem quiser inspirar-se na arquitectura, pode copiar e usar como entender. Quem quiser citar ou traduzir, à vontade — desde que mantenha o mesmo gesto de abertura. Não há *paywalls*, nem *subscribe to read*, nem *premium tier*.
 
 Estas pequenas escolhas, isoladamente, não mudam o mundo. Em conjunto, e quando feitas com alguma consciência, são uma resposta tranquila à ideia de que o digital tem de ser sempre vigiado, monetizado e capturado. Acho que não tem.
